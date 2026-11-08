@@ -1,0 +1,11 @@
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\bin\Debug\net48\Entidades.dll
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\bin\Debug\net48\Entidades.pdb
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\bin\Debug\net48\Entidades.xml
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.csproj.AssemblyReference.cache
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.AssemblyInfoInputs.cache
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.AssemblyInfo.cs
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.dll
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.xml
+C:\Users\josse\Downloads\Login en Capas\Login en Capas\LoginCapas\Entidades\obj\Debug\net48\Entidades.pdb
