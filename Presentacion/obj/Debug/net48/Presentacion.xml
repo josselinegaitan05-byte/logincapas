@@ -1,0 +1,517 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Presentacion</name>
+    </assembly>
+    <members>
+        <member name="T:Presentacion.Contenedor">
+            <summary>
+            Raíz de composición: el único lugar donde se eligen las clases concretas.
+            Los presentadores reciben contratos (interfaces), nunca crean sus dependencias.
+            </summary>
+        </member>
+        <member name="P:Presentacion.Contenedor.Repositorio">
+            <summary>
+            Repositorio de usuarios. Por defecto el de MySQL; se puede reemplazar
+            (por ejemplo por uno en memoria) para pruebas.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Contenedor.CrearServicioUsuario">
+            <summary>Crea el servicio de usuarios con el repositorio y los dos contratos de hash.</summary>
+        </member>
+        <member name="T:Presentacion.Controles.AvatarControl">
+            <summary>
+            Círculo con las iniciales del usuario, usado en la parte inferior del menú lateral.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Controles.AvatarControl.#ctor">
+            <summary>Crea el avatar con doble búfer.</summary>
+        </member>
+        <member name="P:Presentacion.Controles.AvatarControl.Iniciales">
+            <summary>Letras que se dibujan dentro del círculo.</summary>
+        </member>
+        <member name="M:Presentacion.Controles.AvatarControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:Presentacion.Controles.DadoControl">
+            <summary>
+            Control que dibuja un dado con sus puntos (1 a 6). Valor 0 = dado vacío.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Controles.DadoControl.#ctor">
+            <summary>Crea el dado con doble búfer para que no parpadee.</summary>
+        </member>
+        <member name="P:Presentacion.Controles.DadoControl.Valor">
+            <summary>Cara visible del dado (0 a 6).</summary>
+        </member>
+        <member name="M:Presentacion.Controles.DadoControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="T:Presentacion.Controles.Iconos">
+            <summary>
+            Genera íconos a partir de la fuente "Segoe MDL2 Assets" que trae Windows 10/11,
+            así el proyecto no necesita archivos de imagen.
+            </summary>
+        </member>
+        <member name="F:Presentacion.Controles.Iconos.Inicio">
+            <summary>Casa (Inicio).</summary>
+        </member>
+        <member name="F:Presentacion.Controles.Iconos.Usuario">
+            <summary>Agregar persona (Registrar usuario).</summary>
+        </member>
+        <member name="F:Presentacion.Controles.Iconos.Juego">
+            <summary>Control de juego (Craps).</summary>
+        </member>
+        <member name="F:Presentacion.Controles.Iconos.Salir">
+            <summary>Apagar (Cerrar sesión).</summary>
+        </member>
+        <member name="M:Presentacion.Controles.Iconos.Crear(System.Char,System.Drawing.Color,System.Int32)">
+            <summary>Dibuja el glifo en un bitmap transparente del tamaño indicado.</summary>
+        </member>
+        <member name="T:Presentacion.Formularios.frmCraps">
+            <summary>
+            Vista del juego de Craps (formulario hijo MDI). Las reglas están en N_Craps (Negocio).
+            </summary>
+        </member>
+        <member name="M:Presentacion.Formularios.frmCraps.#ctor">
+            <summary>Crea el formulario con un juego nuevo.</summary>
+        </member>
+        <member name="M:Presentacion.Formularios.frmCraps.#ctor(Negocio.N_Craps)">
+            <summary>Crea el formulario con el juego indicado (permite fijar la semilla en pruebas).</summary>
+        </member>
+        <member name="P:Presentacion.Formularios.frmCraps.Presentador">
+            <summary>Presentador asociado (útil para pruebas).</summary>
+        </member>
+        <member name="E:Presentacion.Formularios.frmCraps.LanzarSolicitado">
+            <inheritdoc />
+        </member>
+        <member name="E:Presentacion.Formularios.frmCraps.NuevoJuegoSolicitado">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmCraps.MostrarDados(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmCraps.Suma">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmCraps.Punto">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmCraps.Lanzamientos">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmCraps.Marcador">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmCraps.MostrarMensaje(System.String,Negocio.EstadoCraps)">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmCraps.Dispose(System.Boolean)">
+            <summary>Libera los recursos usados.</summary>
+        </member>
+        <member name="T:Presentacion.Formularios.frmInicio">
+            <summary>
+            Pantalla de inicio (formulario hijo MDI) con el resumen de la sesión.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Formularios.frmInicio.#ctor">
+            <summary>Crea el formulario y carga los datos con su presentador.</summary>
+        </member>
+        <member name="P:Presentacion.Formularios.frmInicio.Bienvenida">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmInicio.Codigo">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmInicio.FechaCreacion">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmInicio.InicioSesion">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmInicio.Dispose(System.Boolean)">
+            <summary>Libera los recursos usados.</summary>
+        </member>
+        <member name="T:Presentacion.Formularios.frmLogin">
+            <summary>
+            Vista del login. Implementa <see cref="T:Presentacion.Vistas.ILoginView"/>: solo maneja controles y
+            delega todo al <see cref="T:Presentacion.Presentadores.LoginPresenter"/>.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Formularios.frmLogin.#ctor">
+            <summary>Crea el formulario y su presentador.</summary>
+        </member>
+        <member name="P:Presentacion.Formularios.frmLogin.Presentador">
+            <summary>Presentador asociado (útil para pruebas).</summary>
+        </member>
+        <member name="P:Presentacion.Formularios.frmLogin.Usuario">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmLogin.Password">
+            <inheritdoc />
+        </member>
+        <member name="E:Presentacion.Formularios.frmLogin.IniciarSesionSolicitado">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmLogin.MostrarError(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmLogin.LimpiarErrores">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmLogin.LimpiarPassword">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmLogin.AbrirMenuPrincipal">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmLogin.Dispose(System.Boolean)">
+            <summary>Libera los recursos usados.</summary>
+        </member>
+        <member name="T:Presentacion.Formularios.frmPrincipal">
+            <summary>
+            Formulario principal MDI con menú lateral a la izquierda, hora actual en la barra
+            superior y el usuario de la sesión en la parte inferior del menú.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Formularios.frmPrincipal.#ctor">
+            <summary>Crea el formulario, su presentador y abre la pantalla de inicio.</summary>
+        </member>
+        <member name="P:Presentacion.Formularios.frmPrincipal.Hora">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmPrincipal.Fecha">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmPrincipal.UsuarioSesion">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmPrincipal.DetalleSesion">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmPrincipal.Iniciales">
+            <inheritdoc />
+        </member>
+        <member name="E:Presentacion.Formularios.frmPrincipal.RelojTick">
+            <inheritdoc />
+        </member>
+        <member name="E:Presentacion.Formularios.frmPrincipal.CerrarSesionSolicitado">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmPrincipal.ConfirmarCierreSesion">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmPrincipal.VolverAlLogin">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmPrincipal.AbrirFormulario``1(System.Func{``0},System.Windows.Forms.Button,System.String)">
+            <summary>
+            Abre un formulario hijo dentro del área MDI. Si ya está abierto lo trae al frente;
+            los demás se cierran para que solo haya uno visible.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Formularios.frmPrincipal.Dispose(System.Boolean)">
+            <summary>Libera los recursos usados.</summary>
+        </member>
+        <member name="T:Presentacion.Formularios.frmRegistroUsuario">
+            <summary>
+            Vista para registrar usuarios (formulario hijo MDI). La contraseña se convierte
+            en hash en la capa de Negocio con IHashService antes de guardarse.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Formularios.frmRegistroUsuario.#ctor">
+            <summary>Crea el formulario y su presentador.</summary>
+        </member>
+        <member name="P:Presentacion.Formularios.frmRegistroUsuario.Presentador">
+            <summary>Presentador asociado (útil para pruebas).</summary>
+        </member>
+        <member name="P:Presentacion.Formularios.frmRegistroUsuario.Codigo">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmRegistroUsuario.Usuario">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmRegistroUsuario.Password">
+            <inheritdoc />
+        </member>
+        <member name="P:Presentacion.Formularios.frmRegistroUsuario.Confirmacion">
+            <inheritdoc />
+        </member>
+        <member name="E:Presentacion.Formularios.frmRegistroUsuario.GuardarSolicitado">
+            <inheritdoc />
+        </member>
+        <member name="E:Presentacion.Formularios.frmRegistroUsuario.LimpiarSolicitado">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmRegistroUsuario.MostrarError(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmRegistroUsuario.MostrarExito(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmRegistroUsuario.LimpiarErrores">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmRegistroUsuario.LimpiarCampos">
+            <inheritdoc />
+        </member>
+        <member name="M:Presentacion.Formularios.frmRegistroUsuario.Dispose(System.Boolean)">
+            <summary>Libera los recursos usados.</summary>
+        </member>
+        <member name="T:Presentacion.Presentadores.CrapsPresenter">
+            <summary>
+            Presentador del juego de Craps: pide al modelo (N_Craps) que lance y le dice
+            a la Vista qué dados, punto y mensaje mostrar.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.CrapsPresenter.#ctor(Presentacion.Vistas.ICrapsView,Negocio.N_Craps)">
+            <summary>Conecta el presentador con su vista y el modelo del juego.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.CrapsPresenter.Iniciar">
+            <summary>Deja la mesa lista para empezar.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.CrapsPresenter.Lanzar">
+            <summary>Lanza los dados y muestra el resultado.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.CrapsPresenter.NuevoJuego">
+            <summary>Reinicia el juego y el marcador.</summary>
+        </member>
+        <member name="T:Presentacion.Presentadores.InicioPresenter">
+            <summary>
+            Presentador de la pantalla de inicio: llena el resumen con los datos de la sesión.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.InicioPresenter.#ctor(Presentacion.Vistas.IInicioView)">
+            <summary>Conecta el presentador con su vista.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.InicioPresenter.Iniciar">
+            <summary>Muestra los datos del usuario en sesión.</summary>
+        </member>
+        <member name="T:Presentacion.Presentadores.LoginPresenter">
+            <summary>
+            Presentador del login: recibe la acción de la Vista, le pide a Negocio que verifique
+            la contraseña (IVerificarHashService) y le dice a la Vista qué mostrar.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.LoginPresenter.#ctor(Presentacion.Vistas.ILoginView,Negocio.N_Usuario)">
+            <summary>Conecta el presentador con su vista y el servicio de usuarios.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.LoginPresenter.IniciarSesion">
+            <summary>Valida las credenciales y abre el menú o muestra el error.</summary>
+        </member>
+        <member name="T:Presentacion.Presentadores.PrincipalPresenter">
+            <summary>
+            Presentador del formulario principal: actualiza la hora y muestra quién inició sesión.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.PrincipalPresenter.#ctor(Presentacion.Vistas.IPrincipalView,System.Func{System.DateTime})">
+            <summary>Crea el presentador. <paramref name="reloj"/> permite fijar la hora en pruebas.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.PrincipalPresenter.Iniciar">
+            <summary>Carga los datos de la sesión y la hora inicial.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.PrincipalPresenter.ActualizarHora">
+            <summary>Muestra la hora y la fecha actuales.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.PrincipalPresenter.CerrarSesion">
+            <summary>Cierra la sesión si el usuario lo confirma.</summary>
+        </member>
+        <member name="T:Presentacion.Presentadores.RegistroUsuarioPresenter">
+            <summary>
+            Presentador del registro de usuarios: le pide a Negocio validar y generar el hash
+            (IHashService) y le indica a la Vista el resultado.
+            </summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.RegistroUsuarioPresenter.#ctor(Presentacion.Vistas.IRegistroUsuarioView,Negocio.N_Usuario)">
+            <summary>Conecta el presentador con su vista y el servicio de usuarios.</summary>
+        </member>
+        <member name="M:Presentacion.Presentadores.RegistroUsuarioPresenter.Guardar">
+            <summary>Valida y guarda el usuario nuevo.</summary>
+        </member>
+        <member name="M:Presentacion.Program.Main">
+            <summary>Punto de entrada: el formulario de inicio es el login.</summary>
+        </member>
+        <member name="T:Presentacion.Tema">
+            <summary>
+            Colores y fuentes compartidos por todos los formularios, para que el diseño sea uniforme.
+            </summary>
+        </member>
+        <member name="F:Presentacion.Tema.Menu">
+            <summary>Fondo del menú lateral.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.MenuHover">
+            <summary>Botón del menú al pasar el mouse.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.MenuActivo">
+            <summary>Botón del menú seleccionado.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.Acento">
+            <summary>Color de acento (botones principales).</summary>
+        </member>
+        <member name="F:Presentacion.Tema.Fondo">
+            <summary>Fondo del área de trabajo.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.Tarjeta">
+            <summary>Fondo de tarjetas.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.Texto">
+            <summary>Texto principal.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.TextoSuave">
+            <summary>Texto secundario.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.TextoMenu">
+            <summary>Texto claro sobre el menú.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.Error">
+            <summary>Color de error.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.Exito">
+            <summary>Color de éxito.</summary>
+        </member>
+        <member name="F:Presentacion.Tema.Aviso">
+            <summary>Color de advertencia/continúa.</summary>
+        </member>
+        <member name="T:Presentacion.Vistas.ICrapsView">
+            <summary>
+            Vista del juego de Craps (formulario hijo MDI).
+            </summary>
+        </member>
+        <member name="E:Presentacion.Vistas.ICrapsView.LanzarSolicitado">
+            <summary>Se dispara al pulsar "Lanzar dados".</summary>
+        </member>
+        <member name="E:Presentacion.Vistas.ICrapsView.NuevoJuegoSolicitado">
+            <summary>Se dispara al pulsar "Nuevo juego".</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.ICrapsView.MostrarDados(System.Int32,System.Int32)">
+            <summary>Dibuja los dos dados (0 = dado vacío).</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.ICrapsView.Suma">
+            <summary>Texto de la suma.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.ICrapsView.Punto">
+            <summary>Texto del punto.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.ICrapsView.Lanzamientos">
+            <summary>Texto del número de lanzamientos.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.ICrapsView.Marcador">
+            <summary>Texto del marcador de partidas.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.ICrapsView.MostrarMensaje(System.String,Negocio.EstadoCraps)">
+            <summary>Muestra el resultado de la jugada con el color de su estado.</summary>
+        </member>
+        <member name="T:Presentacion.Vistas.IInicioView">
+            <summary>
+            Vista de la pantalla de inicio (formulario hijo MDI) con el resumen de la sesión.
+            </summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IInicioView.Bienvenida">
+            <summary>Saludo principal.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IInicioView.Codigo">
+            <summary>Código del usuario.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IInicioView.FechaCreacion">
+            <summary>Fecha en que se creó el usuario.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IInicioView.InicioSesion">
+            <summary>Hora de inicio de la sesión.</summary>
+        </member>
+        <member name="T:Presentacion.Vistas.ILoginView">
+            <summary>
+            Vista del login (MVP). El formulario solo expone lo que escribe el usuario,
+            avisa cuando pulsa "Ingresar" y muestra lo que el presentador le indique.
+            No sabe nada de hash ni de base de datos.
+            </summary>
+        </member>
+        <member name="P:Presentacion.Vistas.ILoginView.Usuario">
+            <summary>Texto escrito en el campo usuario.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.ILoginView.Password">
+            <summary>Texto escrito en el campo contraseña.</summary>
+        </member>
+        <member name="E:Presentacion.Vistas.ILoginView.IniciarSesionSolicitado">
+            <summary>Se dispara al pulsar "Ingresar" o Enter.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.ILoginView.MostrarError(System.String,System.String)">
+            <summary>Muestra un mensaje de validación y marca el campo indicado.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.ILoginView.LimpiarErrores">
+            <summary>Quita los mensajes y marcas de error.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.ILoginView.LimpiarPassword">
+            <summary>Borra la contraseña escrita.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.ILoginView.AbrirMenuPrincipal">
+            <summary>Abre el menú principal (el login queda oculto).</summary>
+        </member>
+        <member name="T:Presentacion.Vistas.IPrincipalView">
+            <summary>
+            Vista del formulario principal MDI con menú lateral.
+            </summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IPrincipalView.Hora">
+            <summary>Hora actual que se muestra en la barra superior.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IPrincipalView.Fecha">
+            <summary>Fecha actual en texto largo.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IPrincipalView.UsuarioSesion">
+            <summary>Nombre del usuario en la parte inferior del menú lateral.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IPrincipalView.DetalleSesion">
+            <summary>Detalle de la sesión (código y hora de inicio).</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IPrincipalView.Iniciales">
+            <summary>Iniciales que se dibujan en el avatar.</summary>
+        </member>
+        <member name="E:Presentacion.Vistas.IPrincipalView.RelojTick">
+            <summary>Se dispara cada segundo para refrescar la hora.</summary>
+        </member>
+        <member name="E:Presentacion.Vistas.IPrincipalView.CerrarSesionSolicitado">
+            <summary>Se dispara al pulsar "Cerrar sesión".</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.IPrincipalView.ConfirmarCierreSesion">
+            <summary>Pregunta si de verdad quiere cerrar sesión.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.IPrincipalView.VolverAlLogin">
+            <summary>Cierra el formulario principal y vuelve al login.</summary>
+        </member>
+        <member name="T:Presentacion.Vistas.IRegistroUsuarioView">
+            <summary>
+            Vista para registrar un usuario nuevo (aquí se usa IHashService.GenerarHash).
+            </summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IRegistroUsuarioView.Codigo">
+            <summary>Código escrito.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IRegistroUsuarioView.Usuario">
+            <summary>Nombre de usuario escrito.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IRegistroUsuarioView.Password">
+            <summary>Contraseña escrita.</summary>
+        </member>
+        <member name="P:Presentacion.Vistas.IRegistroUsuarioView.Confirmacion">
+            <summary>Confirmación de la contraseña.</summary>
+        </member>
+        <member name="E:Presentacion.Vistas.IRegistroUsuarioView.GuardarSolicitado">
+            <summary>Se dispara al pulsar "Guardar".</summary>
+        </member>
+        <member name="E:Presentacion.Vistas.IRegistroUsuarioView.LimpiarSolicitado">
+            <summary>Se dispara al pulsar "Limpiar".</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.IRegistroUsuarioView.MostrarError(System.String,System.String)">
+            <summary>Muestra un error de validación y marca el campo.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.IRegistroUsuarioView.MostrarExito(System.String)">
+            <summary>Muestra el mensaje de éxito.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.IRegistroUsuarioView.LimpiarErrores">
+            <summary>Quita mensajes y marcas.</summary>
+        </member>
+        <member name="M:Presentacion.Vistas.IRegistroUsuarioView.LimpiarCampos">
+            <summary>Deja el formulario en blanco.</summary>
+        </member>
+    </members>
+</doc>

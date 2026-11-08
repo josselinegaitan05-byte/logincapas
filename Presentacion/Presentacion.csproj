@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>Presentacion</RootNamespace>
+    <LangVersion>7.3</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj" />
+    <ProjectReference Include="..\Negocio\Negocio.csproj" />
+    <!-- Solo Contenedor.cs (raíz de composición) usa Datos para crear el repositorio real -->
+    <ProjectReference Include="..\Datos\Datos.csproj" />
+  </ItemGroup>
+</Project>

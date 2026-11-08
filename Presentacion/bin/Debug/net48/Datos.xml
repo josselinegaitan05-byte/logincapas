@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Datos</name>
+    </assembly>
+    <members>
+        <member name="T:Datos.D_Conexion">
+            <summary>
+            Conexión específica de la aplicación a MySQL con privilegios mínimos.
+            </summary>
+            <remarks>
+            Se usa el usuario <c>usr_login</c> (script BaseDatos/02_usuario_acceso_bd.sql), que solo
+            tiene permiso EXECUTE sobre sp_ObtenerUsuarioLogin y sp_InsertarUsuario; no puede leer
+            ni modificar la tabla directamente.
+            <c>CheckParameters=false</c> evita que el conector pida los metadatos del procedimiento,
+            que un usuario con solo EXECUTE no puede leer. Por eso los parámetros se envían en el
+            mismo orden en que están declarados en el procedimiento.
+            </remarks>
+        </member>
+        <member name="F:Datos.D_Conexion.cadenaConexion">
+            <summary>Cadena de conexión a la base de datos productosdb.</summary>
+        </member>
+        <member name="T:Datos.D_Usuario">
+            <summary>
+            Capa de Datos: única clase que habla con MySQL para la tabla usuarios.
+            Solo llama a procedimientos almacenados (nunca arma SQL con texto del usuario).
+            </summary>
+        </member>
+        <member name="M:Datos.D_Usuario.ObtenerPorUsuario(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Datos.D_Usuario.Insertar(Entidades.E_Usuario)">
+            <inheritdoc />
+        </member>
+        <member name="T:Datos.IUsuarioRepositorio">
+            <summary>
+            Contrato de acceso a datos de usuarios. La capa de Negocio depende de esta
+            interfaz y no de MySQL directamente, así se puede probar con un repositorio falso.
+            </summary>
+        </member>
+        <member name="M:Datos.IUsuarioRepositorio.ObtenerPorUsuario(System.String)">
+            <summary>
+            Busca un usuario por su nombre (activo o inactivo).
+            Devuelve null si no existe.
+            </summary>
+        </member>
+        <member name="M:Datos.IUsuarioRepositorio.Insertar(Entidades.E_Usuario)">
+            <summary>
+            Inserta un usuario nuevo. <see cref="P:Entidades.E_Usuario.dsPassword"/> debe traer el hash, no la clave.
+            Devuelve el id generado.
+            </summary>
+        </member>
+    </members>
+</doc>

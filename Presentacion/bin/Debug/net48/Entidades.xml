@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Entidades</name>
+    </assembly>
+    <members>
+        <member name="T:Entidades.E_Usuario">
+            <summary>
+            Capa de Entidades: representa una fila de la tabla <c>usuarios</c>.
+            Es una clase pura de datos (DTO): no tiene lógica ni acceso a la base de datos.
+            </summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.id">
+            <summary>Llave primaria autoincremental.</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dsId">
+            <summary>Código del usuario (por ejemplo "001").</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dsUsuario">
+            <summary>Nombre de usuario con el que se inicia sesión (único).</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dsPassword">
+            <summary>Hash SHA-512 de la contraseña en hexadecimal (128 caracteres). Nunca la contraseña en texto plano.</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dsEstado">
+            <summary>'1' = activo, '0' = inactivo.</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dsUsuarioCreacion">
+            <summary>Usuario que creó el registro.</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dtFechaCreacion">
+            <summary>Fecha de creación del registro.</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dsUsuarioModificacion">
+            <summary>Usuario que hizo la última modificación.</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.dtFechaModificacion">
+            <summary>Fecha de la última modificación.</summary>
+        </member>
+        <member name="P:Entidades.E_Usuario.EstaActivo">
+            <summary>Indica si el usuario está activo (dsEstado = '1').</summary>
+        </member>
+    </members>
+</doc>

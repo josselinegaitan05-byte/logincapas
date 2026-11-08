@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Negocio</name>
+    </assembly>
+    <members>
+        <member name="T:Negocio.Contratos.IHashService">
+            <summary>
+            Contrato #1: su ÚNICA responsabilidad es GENERAR el hash de una contraseña.
+            Se usa cuando un usuario se registra o cambia su contraseña.
+            </summary>
+        </member>
+        <member name="M:Negocio.Contratos.IHashService.GenerarHash(System.String)">
+            <summary>
+            Genera el hash de una contraseña en texto plano.
+            </summary>
+            <param name="textoPlano">Contraseña tal como la escribió el usuario.</param>
+            <returns>Hash en hexadecimal, listo para guardarse en la base de datos.</returns>
+        </member>
+        <member name="T:Negocio.Contratos.IVerificarHashService">
+            <summary>
+            Contrato #2: su ÚNICA responsabilidad es VERIFICAR si una contraseña en texto
+            plano coincide con el hash almacenado. Se usa cuando el usuario inicia sesión.
+            </summary>
+        </member>
+        <member name="M:Negocio.Contratos.IVerificarHashService.Verificar(System.String,System.String)">
+            <summary>
+            Comprueba una contraseña contra el hash guardado en la base de datos.
+            </summary>
+            <param name="textoPlano">Contraseña que escribió el usuario en el login.</param>
+            <param name="hashAlmacenado">Hash en hexadecimal leído de la base de datos.</param>
+            <returns>true si la contraseña es correcta.</returns>
+        </member>
+        <member name="T:Negocio.EstadoCraps">
+            <summary>Estado de una partida de Craps.</summary>
+        </member>
+        <member name="F:Negocio.EstadoCraps.SinIniciar">
+            <summary>Todavía no se ha lanzado (o se reinició).</summary>
+        </member>
+        <member name="F:Negocio.EstadoCraps.Continua">
+            <summary>Se estableció un punto y hay que seguir lanzando.</summary>
+        </member>
+        <member name="F:Negocio.EstadoCraps.Gana">
+            <summary>El jugador ganó.</summary>
+        </member>
+        <member name="F:Negocio.EstadoCraps.Pierde">
+            <summary>El jugador perdió.</summary>
+        </member>
+        <member name="T:Negocio.N_Craps">
+            <summary>
+            Modelo del juego de Craps (reglas en la capa de Negocio, no en el formulario).
+            </summary>
+            <remarks>
+            Primer lanzamiento: 7 u 11 gana; 2, 3 o 12 pierde; cualquier otro valor se convierte
+            en el "punto". Después se sigue lanzando: si sale el punto gana, si sale 7 pierde.
+            </remarks>
+        </member>
+        <member name="M:Negocio.N_Craps.#ctor(System.Random)">
+            <summary>Crea el juego. Se puede pasar un Random con semilla para pruebas.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Dado1">
+            <summary>Valor del primer dado del último lanzamiento.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Dado2">
+            <summary>Valor del segundo dado del último lanzamiento.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Suma">
+            <summary>Suma del último lanzamiento.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Punto">
+            <summary>Punto establecido (0 si no hay).</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Lanzamientos">
+            <summary>Cantidad de lanzamientos de la partida actual.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Estado">
+            <summary>Estado actual de la partida.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Ganadas">
+            <summary>Partidas ganadas en la sesión.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Perdidas">
+            <summary>Partidas perdidas en la sesión.</summary>
+        </member>
+        <member name="P:Negocio.N_Craps.Terminada">
+            <summary>true si la partida terminó (ganó o perdió).</summary>
+        </member>
+        <member name="M:Negocio.N_Craps.Lanzar">
+            <summary>Lanza los dos dados y aplica las reglas.</summary>
+        </member>
+        <member name="M:Negocio.N_Craps.NuevaPartida">
+            <summary>Empieza otra partida conservando el marcador.</summary>
+        </member>
+        <member name="M:Negocio.N_Craps.Reiniciar">
+            <summary>Empieza de cero, incluido el marcador.</summary>
+        </member>
+        <member name="T:Negocio.N_Usuario">
+            <summary>
+            Capa de Negocio (Modelo del MVP): reglas para iniciar sesión y registrar usuarios.
+            Recibe sus dependencias por constructor (inyección de dependencias), por eso
+            trabaja con los contratos y no con clases concretas.
+            </summary>
+        </member>
+        <member name="F:Negocio.N_Usuario.CampoUsuario">
+            <summary>Nombres de campo que usa la vista para marcar errores.</summary>
+        </member>
+        <member name="F:Negocio.N_Usuario.CampoPassword">
+            <summary>Campo contraseña.</summary>
+        </member>
+        <member name="F:Negocio.N_Usuario.CampoConfirmacion">
+            <summary>Campo confirmación de contraseña.</summary>
+        </member>
+        <member name="F:Negocio.N_Usuario.CampoCodigo">
+            <summary>Campo código.</summary>
+        </member>
+        <member name="F:Negocio.N_Usuario.LongitudMinimaPassword">
+            <summary>Longitud mínima de una contraseña nueva.</summary>
+        </member>
+        <member name="M:Negocio.N_Usuario.#ctor(Datos.IUsuarioRepositorio,Negocio.Contratos.IHashService,Negocio.Contratos.IVerificarHashService)">
+            <summary>Crea el servicio con su repositorio y los dos contratos de hash.</summary>
+        </member>
+        <member name="M:Negocio.N_Usuario.IniciarSesion(System.String,System.String)">
+            <summary>
+            Valida las credenciales. Usa <see cref="T:Negocio.Contratos.IVerificarHashService"/> para comparar la
+            contraseña escrita con el hash guardado.
+            </summary>
+        </member>
+        <member name="M:Negocio.N_Usuario.Registrar(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Registra un usuario nuevo. Usa <see cref="T:Negocio.Contratos.IHashService"/> para generar el hash
+            antes de mandar el usuario a la capa de Datos.
+            </summary>
+        </member>
+        <member name="T:Negocio.ResultadoOperacion">
+            <summary>
+            Resultado de una operación de negocio (login o registro): indica si salió bien,
+            el mensaje para el usuario y, en el login, el usuario autenticado.
+            </summary>
+        </member>
+        <member name="P:Negocio.ResultadoOperacion.Exitoso">
+            <summary>true si la operación se completó.</summary>
+        </member>
+        <member name="P:Negocio.ResultadoOperacion.Mensaje">
+            <summary>Mensaje listo para mostrar en la Vista.</summary>
+        </member>
+        <member name="P:Negocio.ResultadoOperacion.Campo">
+            <summary>Campo de la vista que causó el error (para marcarlo), o null.</summary>
+        </member>
+        <member name="P:Negocio.ResultadoOperacion.Usuario">
+            <summary>Usuario autenticado o registrado (solo si Exitoso).</summary>
+        </member>
+        <member name="M:Negocio.ResultadoOperacion.Ok(System.String,Entidades.E_Usuario)">
+            <summary>Crea un resultado correcto.</summary>
+        </member>
+        <member name="M:Negocio.ResultadoOperacion.Error(System.String,System.String)">
+            <summary>Crea un resultado con error de validación o de sistema.</summary>
+        </member>
+        <member name="T:Negocio.Servicios.Sha512PasswordService">
+            <summary>
+            Implementación real de los dos contratos usando SHA-512.
+            </summary>
+            <remarks>
+            Produce los mismos 64 bytes que <c>UNHEX(SHA2(texto, 512))</c> en MySQL, por eso los
+            usuarios creados desde el script SQL y los creados desde la aplicación son compatibles.
+            Si mañana se cambia a BCrypt o Argon2, solo se cambia esta clase: la Vista, el
+            Presentador y la base de datos no se tocan.
+            </remarks>
+        </member>
+        <member name="M:Negocio.Servicios.Sha512PasswordService.GenerarHash(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Negocio.Servicios.Sha512PasswordService.Verificar(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Negocio.Servicios.Sha512PasswordService.ConvertirAHex(System.Byte[])">
+            <summary>Convierte bytes a texto hexadecimal en mayúsculas (igual que HEX() de MySQL).</summary>
+        </member>
+        <member name="M:Negocio.Servicios.Sha512PasswordService.CompararTiempoConstante(System.String,System.String)">
+            <summary>
+            Compara dos cadenas recorriéndolas completas, para que el tiempo de respuesta
+            no revele cuántos caracteres coincidieron (evita ataques de tiempo).
+            </summary>
+        </member>
+        <member name="T:Negocio.SesionActual">
+            <summary>
+            Guarda quién inició sesión, para mostrarlo en la parte inferior del menú lateral
+            y para registrar quién crea nuevos usuarios.
+            </summary>
+        </member>
+        <member name="P:Negocio.SesionActual.Usuario">
+            <summary>Usuario autenticado, o null si no hay sesión.</summary>
+        </member>
+        <member name="P:Negocio.SesionActual.Inicio">
+            <summary>Fecha y hora en que se inició la sesión.</summary>
+        </member>
+        <member name="P:Negocio.SesionActual.Activa">
+            <summary>true si hay un usuario con sesión iniciada.</summary>
+        </member>
+        <member name="M:Negocio.SesionActual.Iniciar(Entidades.E_Usuario)">
+            <summary>Abre la sesión del usuario indicado.</summary>
+        </member>
+        <member name="M:Negocio.SesionActual.Cerrar">
+            <summary>Cierra la sesión.</summary>
+        </member>
+    </members>
+</doc>
