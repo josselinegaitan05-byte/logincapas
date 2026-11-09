@@ -4,8 +4,8 @@ Aplicación de escritorio en **C# Windows Forms** que valida usuarios contra **M
 
 | | |
 |---|---|
-| **Autor** | _(escribe aquí tu nombre completo)_ |
-| **Fecha** | 8 de noviembre de 2026 |
+| **Autor** | Josseline Gaitán |
+| **Fecha** | 9 de noviembre de 2026 |
 | **Curso** | Herramientas de la Programación Aplicada III (.NET) — Grupo 1IL133 |
 | **Instructora** | Ing. Irina Fong |
 | **Universidad** | Universidad Tecnológica de Panamá — Facultad de Ingeniería en Sistemas |
@@ -137,34 +137,50 @@ Server=localhost;Port=3306;Database=productosdb;Uid=usr_login;Pwd=Login2026*;Che
 
 Formulario principal MDI con el **menú lateral** a la izquierda, la **hora actual** arriba a la derecha y la **sesión del usuario** (avatar, nombre, código y hora de entrada) en la parte inferior del menú:
 
-![Formulario MDI con menú lateral, hora y sesión](docs/img/05-mdi-inicio.png)
+
+<img width="1116" height="719" alt="05-mdi-inicio" src="https://github.com/user-attachments/assets/72055565-28fe-48d7-8431-a6a3de5a3b5b" />
+
+
 
 Formulario hijo *Registrar usuario* dentro del MDI. La contraseña se convierte en hash con `IHashService.GenerarHash()` y a la base de datos solo llega el hash. El mensaje confirma que el usuario `jperez` se guardó:
 
-![Registro de usuario exitoso](docs/img/07-registro-exitoso.png)
+
+<img width="1116" height="719" alt="07-registro-exitoso" src="https://github.com/user-attachments/assets/ed9362d5-462d-44d7-b78f-7e2d9fda1ef8" />
+
+
 
 ### Resultado del juego de Craps
 
 **Partida ganada:** el punto fue 4 y volvió a salir antes que un 7.
 
-![Craps: partida ganada](docs/img/08-craps-gana.png)
+
+<img width="1116" height="719" alt="08-craps-gana" src="https://github.com/user-attachments/assets/7ee8653b-61e5-46df-9bca-7c5b89adc6de" />
+
+
 
 **Partida perdida:** el punto fue 5 y salió un 7 antes de repetirlo.
 
-![Craps: partida perdida](docs/img/09-craps-pierde.png)
+
+<img width="1116" height="719" alt="09-craps-pierde" src="https://github.com/user-attachments/assets/bdb5a748-9747-4649-8ea1-2b939a03ae43" />
+
+
 
 ### Resultado de validaciones
 
 Pantalla de login:
 
-![Login](docs/img/01-login.png)
+
+<img width="686" height="439" alt="01-login" src="https://github.com/user-attachments/assets/d15782cc-910c-4e86-8484-3ab35870ff4f" />
+
+
+
 
 | Validación | Imagen |
 |---|---|
-| **Campo usuario vacío** (`ErrorProvider` junto al campo y mensaje en rojo) | ![Campos vacíos](docs/img/02-validacion-campos-vacios.png) |
-| **Contraseña incorrecta**, verificada con `IVerificarHashService` | ![Contraseña incorrecta](docs/img/03-validacion-clave-incorrecta.png) |
-| **Usuario inactivo** (`dsEstado = '0'`): la contraseña es correcta, pero no se permite entrar | ![Usuario inactivo](docs/img/04-validacion-usuario-inactivo.png) |
-| **Registro: las contraseñas no coinciden** | ![Validación de registro](docs/img/06-validacion-registro.png) |
+| **Campo usuario vacío** (`ErrorProvider` junto al campo y mensaje en rojo) | <img width="686" height="439" alt="02-validacion-campos-vacios" src="https://github.com/user-attachments/assets/2aa34ac7-008a-4d2e-b88e-8c0a9d7e4c1a" /> |
+| **Contraseña incorrecta**, verificada con `IVerificarHashService` | <img width="686" height="439" alt="03-validacion-clave-incorrecta" src="https://github.com/user-attachments/assets/cb0cc4b1-4e83-4709-8b6a-80d356795a3f" /> |
+| **Usuario inactivo** (`dsEstado = '0'`): la contraseña es correcta, pero no se permite entrar | <img width="686" height="439" alt="04-validacion-usuario-inactivo" src="https://github.com/user-attachments/assets/bfb36267-952d-41fe-8a31-47149a3220d1" /> |
+| **Registro: las contraseñas no coinciden** | <img width="1116" height="719" alt="06-validacion-registro" src="https://github.com/user-attachments/assets/ae7818ab-6885-47a2-9441-89e5bad5cb8e" />|
 
 Reglas validadas en `N_Usuario`:
 
@@ -202,7 +218,7 @@ Controles en el diseñador de Visual Studio:
 
 | `frmPrincipal` (MDI) | `frmLogin` |
 |---|---|
-| ![Controles de frmPrincipal](docs/img/12-controles-frmprincipal.png) | ![Controles de frmLogin](docs/img/13-controles-frmlogin.png) |
+| <img width="1407" height="500" alt="12-controles-frmprincipal" src="https://github.com/user-attachments/assets/64ce49e2-8061-460e-8dac-82964e88fcec" />| <img width="946" height="553" alt="13-controles-frmlogin" src="https://github.com/user-attachments/assets/e255755a-5e43-499b-b897-b3a45f2e20e4" />|
 
 ## 8. Proceso de instalación
 
@@ -236,7 +252,7 @@ Si MySQL usa otro puerto o contraseña, cambie la cadena en `LoginCapas/Datos/D_
 
 | Scripts ejecutados en MySQL Workbench | Solución abierta en Visual Studio |
 |---|---|
-| ![Scripts en Workbench](docs/img/10-instalacion-workbench.png) | ![Solución en Visual Studio](docs/img/11-instalacion-solucion.png) |
+| <img width="1917" height="992" alt="10-instalacion-workbench" src="https://github.com/user-attachments/assets/6432ac0e-bd85-4964-9a99-76be95fe3bf6" />| <img width="336" height="395" alt="11-instalacion-solucion" src="https://github.com/user-attachments/assets/d558facc-a6d2-44a6-9496-e33deccad15e" />|
 
 ### Solución de problemas
 
